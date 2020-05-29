@@ -29,7 +29,7 @@ public class EnemyStructure
 
     public void CreateEnemy() 
     {
-        _enemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+        _enemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length); //Выбираем рандомный тип врага 
         InitializationEnemy();
     }
 

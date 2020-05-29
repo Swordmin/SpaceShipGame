@@ -13,20 +13,17 @@ public class BulletControll : MonoBehaviour
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        float _scatter = Random.Range(-scatter, scatter);
-        _rigidBody.AddForce((Vector2.right * _scatter), ForceMode2D.Impulse);
+        float _scatter = Random.Range(-scatter, scatter);                     //Толкаем пулю в лево или право для создания разброса                  
+        _rigidBody.AddForce((Vector2.right * _scatter), ForceMode2D.Impulse); //
     }
 
     private void Awake()
     {
         Destroy(gameObject, 5f);
-        //_rigidBody.AddForce(Vector2.up * 50, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
     {
-
-        //_rigidBody.AddForce(Vector2.up * 50, ForceMode2D.Impulse);
         transform.Translate(Vector2.up / 10);
     }
 
