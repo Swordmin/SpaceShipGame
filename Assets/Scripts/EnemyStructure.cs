@@ -24,8 +24,7 @@ public class EnemyStructure
         }
     }
 
-    public float EngineHealth;
-    public float CabinHealth;
+    public float[] partHealth = new float[3] { 100f, 100f, 100f};// 0 - Engine. 1 - Cabine. 2 - Weapon.
 
     public bool enemyLife = true;
     private EnemyType _enemyType;
@@ -41,13 +40,13 @@ public class EnemyStructure
     {
         switch (_enemyType) 
         {
-            case EnemyType.asteroid:
-                newEnemy = new AsteroidEnemy();
-                newEnemy.InitializationEnemy();
-                break;
-            case EnemyType.baseEnemy:
-                newEnemy = new BaseEnemy();
-                newEnemy.InitializationEnemy();
+            case EnemyType.asteroid:             ///
+                newEnemy = new AsteroidEnemy();   //
+                newEnemy.InitializationEnemy();   //
+                break;                            //Ещё не понял как вынести это в отдельную функцию
+            case EnemyType.baseEnemy:             //
+                newEnemy = new BaseEnemy();       //
+                newEnemy.InitializationEnemy();  ///
                 break;
         }
     }

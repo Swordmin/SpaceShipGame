@@ -8,13 +8,9 @@ using UnityEngine.UI;
 public class PlayerControll : MonoBehaviour
 {
 
-    [SerializeField] private GameObject bulletPref;
-    [SerializeField] private GameObject gun;
+
     [SerializeField] private GameObject groupAtack;
     [SerializeField] private GameObject cameraAtack;
-    [SerializeField] private Image IndexAim;
-
-    [SerializeField] private float scatter;
 
     public GameObject targetEnemy;
     public Rigidbody2D _rigidbody;
@@ -23,14 +19,13 @@ public class PlayerControll : MonoBehaviour
 
     public float testSpeed;
 
-    public Vector3 worldPos;
+    private Vector3 worldPos;
 
     public bool autoAim;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        StartCoroutine(TimerAim());
     }
 
     private void FixedUpdate()
@@ -64,28 +59,10 @@ public class PlayerControll : MonoBehaviour
         testSpeed = speed;
     }
 
-    public void Fire() 
-    {
-        GameObject bullet = Instantiate(bulletPref, gun.transform.position, gameObject.transform.rotation);
-        bullet.GetComponent<BulletControll>().scatter = scatter;
-    }
 
     private void AtackStart() 
     {
         groupAtack.SetActive(true);
-    }
-
-
-    IEnumerator TimerAim() 
-    {
-        while (true) 
-        {
-            IndexAim.fillAmount += 0.01f;
-            scatter -= 0.01f;
-            yield return new WaitForSeconds(0.5f);
-            if (IndexAim.fillAmount >= 1)
-                break;
-        }
     }
 
 }

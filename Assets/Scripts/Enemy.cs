@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int onAimId;
 
-    EnemyStructure _enemyStruct = new EnemyStructure();
+    private EnemyStructure _enemyStruct = new EnemyStructure();
 
-    public void Start()
+    private void Start()
     {
         _enemyStruct.CreateEnemy();
         _enemyStruct.newEnemy.Atack();
@@ -15,10 +16,13 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(float damage) 
     {
-        _enemyStruct.newEnemy.GetDamage(damage);
-        if (!_enemyStruct.newEnemy.enemyLife)
-            Destroy(gameObject);
+        _enemyStruct.partHealth[onAimId + 1] -= damage;
+        _enemyStruct.GetDamage(damage);
     }
-    
+
+    public void OnAim(int id) 
+    {
+        onAimId = id;
+    }
 
 }
