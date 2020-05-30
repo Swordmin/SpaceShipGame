@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,6 +12,9 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject groupAtack;
     [SerializeField] private GameObject cameraAtack;
+    [SerializeField] private Image IndexAim;
+
+    [SerializeField] private float scatter;
 
     public GameObject targetEnemy;
     public Rigidbody2D _rigidbody;
@@ -26,6 +30,7 @@ public class PlayerControll : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        StartCoroutine(TimerAim());
     }
 
     private void FixedUpdate()
@@ -62,7 +67,7 @@ public class PlayerControll : MonoBehaviour
     public void Fire() 
     {
         GameObject bullet = Instantiate(bulletPref, gun.transform.position, gameObject.transform.rotation);
-        bullet.GetComponent<BulletControll>().scatter = 3;
+        bullet.GetComponent<BulletControll>().scatter = scatter;
     }
 
     private void AtackStart() 
@@ -70,12 +75,17 @@ public class PlayerControll : MonoBehaviour
         groupAtack.SetActive(true);
     }
 
-    public void AutoAimEnable() 
+
+    IEnumerator TimerAim() 
     {
-        if (autoAim)
-            autoAim = false;
-        else
-            autoAim = true;
+        while (true) 
+        {
+            IndexAim.fillAmount += 0.01f;
+            scatter -= 0.01f;
+            yield return new WaitForSeconds(0.5f);
+            if (IndexAim.fillAmount >= 1)
+                break;
+        }
     }
 
 }
