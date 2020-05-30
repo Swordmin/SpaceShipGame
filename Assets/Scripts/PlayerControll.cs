@@ -9,6 +9,8 @@ public class PlayerControll : MonoBehaviour
 
     [SerializeField] private GameObject bulletPref;
     [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject groupAtack;
+    [SerializeField] private GameObject cameraAtack;
 
     public GameObject targetEnemy;
     public Rigidbody2D _rigidbody;
@@ -34,6 +36,12 @@ public class PlayerControll : MonoBehaviour
     private void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.J)) 
+        {
+            groupAtack.SetActive(true);
+            cameraAtack.SetActive(true);
+        }
+
         if(targetEnemy != null)
         {
             worldPos = Input.mousePosition;
@@ -55,6 +63,11 @@ public class PlayerControll : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPref, gun.transform.position, gameObject.transform.rotation);
         bullet.GetComponent<BulletControll>().scatter = 3;
+    }
+
+    private void AtackStart() 
+    {
+        groupAtack.SetActive(true);
     }
 
     public void AutoAimEnable() 

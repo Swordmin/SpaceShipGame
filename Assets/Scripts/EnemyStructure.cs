@@ -23,6 +23,10 @@ public class EnemyStructure
                 EnemyDestroy();
         }
     }
+
+    public float EngineHealth;
+    public float CabinHealth;
+
     public bool enemyLife = true;
     private EnemyType _enemyType;
     public EnemyStructure newEnemy;
