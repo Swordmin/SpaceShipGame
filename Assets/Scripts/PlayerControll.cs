@@ -15,6 +15,7 @@ public class PlayerControll : MonoBehaviour
     public GameObject targetEnemy;
     public Rigidbody2D _rigidbody;
 
+
     SpaceShip ship = new SpaceShip(100, 10, 0, 1, 2);
 
     public float testSpeed;
@@ -64,5 +65,4 @@ public class PlayerControll : MonoBehaviour
     {
         groupAtack.SetActive(true);
     }
-
 }

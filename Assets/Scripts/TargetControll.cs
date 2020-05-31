@@ -5,11 +5,15 @@ using UnityEngine;
 public class TargetControll : MonoBehaviour
 {
 
-    public PlayerControll PC;
+    public PlayerControll _pC;
 
+    [SerializeField] private GameObject camera;
+    [SerializeField] private CameraControll _cameraControll;
     public void SetTarget() 
     {
-        PC.targetEnemy = gameObject;
+        _pC.targetEnemy = gameObject;
+        _cameraControll.StartCoroutine("CameraMove", gameObject);
+        _cameraControll._target = gameObject;
     }
 
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int onAimId;
 
     private EnemyStructure _enemyStruct = new EnemyStructure();
 
@@ -14,15 +13,13 @@ public class Enemy : MonoBehaviour
         _enemyStruct.newEnemy.Atack();
     }
 
-    public void GetDamage(float damage) 
+    public void GetDamage(float damage, int id) 
     {
-        _enemyStruct.partHealth[onAimId + 1] -= damage;
+        _enemyStruct.partHealth[id + 1] -= damage;
+        Debug.Log(_enemyStruct.partHealth[id + 1].ToString());
         _enemyStruct.GetDamage(damage);
     }
 
-    public void OnAim(int id) 
-    {
-        onAimId = id;
-    }
+
 
 }

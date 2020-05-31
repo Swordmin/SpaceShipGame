@@ -13,6 +13,8 @@ public class AtackSystem : MonoBehaviour
     [SerializeField] private float scatter;
     [SerializeField] private float reload;
 
+    [SerializeField] public int onAimId;
+
     private void Start()
     {
         StartCoroutine(TimerAim());
@@ -24,6 +26,7 @@ public class AtackSystem : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPref, gun.transform.position, gameObject.transform.rotation);
             bullet.GetComponent<BulletControll>().scatter = scatter;
+            bullet.GetComponent<BulletControll>().onAimId = onAimId;
             ReloadBegin();
         }
     }
@@ -34,8 +37,9 @@ public class AtackSystem : MonoBehaviour
         IndexAim.fillAmount = 0;
     }
 
-    public void StartAim() 
+    public void OnAim(int id)
     {
+        onAimId = id;
     }
 
     private IEnumerator TimerAim()

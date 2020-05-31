@@ -7,6 +7,7 @@ public class BulletControll : MonoBehaviour
 
     public float scatter;
     public float damage = 10f;
+    public int onAimId;
 
     [SerializeField] private Rigidbody2D _rigidBody;
 
@@ -31,7 +32,7 @@ public class BulletControll : MonoBehaviour
     {
         if (collision.GetComponent<Enemy>())
         {
-            collision.GetComponent<Enemy>().GetDamage(damage);
+            collision.GetComponent<Enemy>().GetDamage(damage, onAimId);
             Destroy(gameObject);
         }
     }
