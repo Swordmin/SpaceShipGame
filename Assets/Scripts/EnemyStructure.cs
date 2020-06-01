@@ -76,7 +76,6 @@ public class BaseEnemy : EnemyStructure
     }
     public override void Atack()
     {
-        Debug.Log("Find");
         base.Atack();
     }
 }
@@ -87,9 +86,9 @@ public class AsteroidEnemy : EnemyStructure
     {
         Health = 30;
     }
-    public override void Atack()
-    {
-        Debug.Log("NoActive");
+    public override void Atack() 
+    { 
+
         base.Atack();
     }
 }

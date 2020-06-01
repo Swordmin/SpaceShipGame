@@ -9,7 +9,11 @@ public class BulletControll : MonoBehaviour
     public float damage = 10f;
     public int onAimId;
 
+    public float сhanceMiss;
+
+
     [SerializeField] private Rigidbody2D _rigidBody;
+    public PlayerControll _pC;
 
     private void Start()
     {
@@ -30,10 +34,14 @@ public class BulletControll : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Enemy>())
+        float _chanceMiss = 100 - сhanceMiss;
+        float i = Random.Range(0f, 100f);
+        if (collision.GetComponent<Enemy>() && i < _chanceMiss)
         {
             collision.GetComponent<Enemy>().GetDamage(damage, onAimId);
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponentInChildren<ParticleSystem>().Play();
+            _pC.ship.gunnerExp += 1;
         }
     }
 

@@ -5,19 +5,25 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    private EnemyStructure _enemyStruct = new EnemyStructure();
+    public BaseEnemy _baseEnemy = new BaseEnemy();
 
     private void Start()
     {
-        _enemyStruct.CreateEnemy();
-        _enemyStruct.newEnemy.Atack();
+        _baseEnemy.CreateEnemy();
+        _baseEnemy.Atack();
     }
 
     public void GetDamage(float damage, int id) 
     {
-        _enemyStruct.partHealth[id + 1] -= damage;
-        Debug.Log(_enemyStruct.partHealth[id + 1].ToString());
-        _enemyStruct.GetDamage(damage);
+        _baseEnemy.partHealth[id + 1] -= damage;
+        _baseEnemy.GetDamage(damage);
+        GetComponent<TargetControll>().healthIndex.fillAmount = _baseEnemy.Health/100;
+        if (_baseEnemy.Health <= 0) 
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponentInChildren<ParticleSystem>().Play();
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
 

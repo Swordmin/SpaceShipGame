@@ -16,7 +16,7 @@ public class PlayerControll : MonoBehaviour
     public Rigidbody2D _rigidbody;
 
 
-    SpaceShip ship = new SpaceShip(100, 10, 0, 1, 2);
+    public SpaceShip ship = new SpaceShip(100, 10, 0, 1, 2, 1, 1);
 
     public float testSpeed;
 
