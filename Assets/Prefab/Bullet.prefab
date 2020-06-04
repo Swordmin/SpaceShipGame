@@ -4730,7 +4730,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4827,7 +4827,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -4870,7 +4870,11 @@ MonoBehaviour:
   scatter: 0
   damage: 10
   onAimId: 0
+  "\u0441hanceMiss": 0
+  missImage: {fileID: 7961035529665705442, guid: f5601da18880e5946b1bed83c9de0edc,
+    type: 3}
   _rigidBody: {fileID: 1277162403}
+  _pC: {fileID: 0}
 --- !u!50 &1277162403
 Rigidbody2D:
   serializedVersion: 4

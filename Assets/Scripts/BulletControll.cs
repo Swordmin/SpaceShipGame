@@ -11,6 +11,8 @@ public class BulletControll : MonoBehaviour
 
     public float сhanceMiss;
 
+    [SerializeField] private GameObject missImage;
+
 
     [SerializeField] private Rigidbody2D _rigidBody;
     public PlayerControll _pC;
@@ -36,12 +38,30 @@ public class BulletControll : MonoBehaviour
     {
         float _chanceMiss = 100 - сhanceMiss;
         float i = Random.Range(0f, 100f);
+        Debug.Log(_chanceMiss.ToString() + "  " + i.ToString());
         if (collision.GetComponent<Enemy>() && i < _chanceMiss)
         {
+
             collision.GetComponent<Enemy>().GetDamage(damage, onAimId);
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponentInChildren<ParticleSystem>().Play();
             _pC.ship.gunnerExp += 1;
+
+        }
+        else if(i > _chanceMiss && collision.GetComponent<Enemy>())
+        {
+            Instantiate(missImage, new Vector2(transform.position.x, transform.position.y + Random.Range(0.5f, 1.5f)), Quaternion.identity);
+        }
+
+        if (collision.GetComponent<PlayerControll>() && i < _chanceMiss) 
+        {
+            collision.GetComponent<PlayerControll>().GetDamage(damage);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else if(i > _chanceMiss && collision.GetComponent<PlayerControll>())
+        {
+            Instantiate(missImage, new Vector2(transform.position.x,transform.position.y + Random.Range(0.5f,1.5f)), Quaternion.identity);
         }
     }
 

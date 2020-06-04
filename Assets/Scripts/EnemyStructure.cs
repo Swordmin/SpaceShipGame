@@ -23,12 +23,18 @@ public class EnemyStructure
                 EnemyDestroy();
         }
     }
+    public float reload;
+
+    public float mobility;
+    public float gunnerExp;
+    public float pilotExp;
 
     public float[] partHealth = new float[3] { 100f, 100f, 100f};// 0 - Engine. 1 - Cabine. 2 - Weapon.
 
     public bool enemyLife = true;
     private EnemyType _enemyType;
     public EnemyStructure newEnemy;
+
 
     public void CreateEnemy() 
     {
@@ -73,6 +79,7 @@ public class BaseEnemy : EnemyStructure
     public override void InitializationEnemy()
     {
         Health = 30;
+        gunnerExp = 1;
     }
     public override void Atack()
     {

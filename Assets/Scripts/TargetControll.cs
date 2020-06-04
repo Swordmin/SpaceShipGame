@@ -18,6 +18,7 @@ public class TargetControll : MonoBehaviour
         _cameraControll = GameObject.Find("FightModeCamera").GetComponent<CameraControll>();
         _pC = GameObject.Find("Player").GetComponent<PlayerControll>();
         healthIndex = GameObject.Find("IndexHealth").GetComponent<Image>();
+        healthIndex.fillAmount = GetComponent<Enemy>()._baseEnemy.Health / 100;
 
     }
 
