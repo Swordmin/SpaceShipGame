@@ -11,18 +11,12 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private GameObject groupAtack;
     [SerializeField] private GameObject cameraAtack;
-
-    public GameObject targetEnemy;
-    public Rigidbody2D _rigidbody;
+    [SerializeField] private Rigidbody2D _rigidbody;
 
     public float[] partHealth = new float[3] { 100f, 100f, 100f };// 0 - Engine. 1 - Cabine. 2 - Weapon.
     public SpaceShip ship = new SpaceShip(100, 10, 0, 1, 2, 1, 1);
 
     public float testSpeed;
-
-    private Vector3 worldPos;
-
-    public bool autoAim;
 
     private void Start()
     {
@@ -42,17 +36,6 @@ public class PlayerControll : MonoBehaviour
             groupAtack.SetActive(true);
             cameraAtack.SetActive(true);
         }
-
-        if(targetEnemy != null)
-        {
-            worldPos = Input.mousePosition;
-            worldPos = targetEnemy.transform.position;
-        }
-        float dx = transform.position.x - worldPos.x;
-        float dy = transform.position.y - worldPos.y;
-        float angle = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
-        Quaternion rot = Quaternion.Euler(new Vector3(0, 0, angle + 90));
-        transform.rotation = rot;
     }
 
     public void Move(float speed) 
@@ -63,10 +46,10 @@ public class PlayerControll : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        healthBar.fillAmount = ship.health / 100;
+        healthBar.fillAmount = ship.GetHealth(0) / 100;
         partHealth[Random.Range(0,3)] -= damage;
         ship.GetDamage(damage);
-        if (ship.health <= 0)
+        if (ship.GetHealth(0) <= 0)
         {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponentInChildren<ParticleSystem>().Play();

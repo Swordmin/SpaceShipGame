@@ -65,15 +65,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AtackSystem.cs" />
     <Compile Include="Assets\Scripts\BulletControll.cs" />
-    <Compile Include="Assets\Scripts\CameraControll.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyStructure.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerControll.cs" />
     <Compile Include="Assets\Scripts\SpaceShip.cs" />
-    <Compile Include="Assets\Scripts\TargetControll.cs" />
     <Compile Include="Assets\Scripts\TimerDestroy.cs" />
-    <Compile Include="Assets\Scripts\UIHideControll.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

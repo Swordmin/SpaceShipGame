@@ -4794,7 +4794,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5359920429346607511}
   - component: {fileID: 5359920429346607508}
-  - component: {fileID: 5359920429346607509}
   - component: {fileID: 5359920429346607506}
   - component: {fileID: 5359920429346607510}
   - component: {fileID: 786270578}
@@ -4813,7 +4812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5359920429346607504}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: -2.35, y: 3.12, z: 0}
+  m_LocalPosition: {x: 0, y: 6.49, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 5359920427938498075}
@@ -4872,22 +4871,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5359920429346607509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359920429346607504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4750b99d55a864d950bab651c9f013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pC: {fileID: 0}
-  healthIndex: {fileID: 0}
-  camera: {fileID: 0}
-  _cameraControll: {fileID: 0}
 --- !u!61 &5359920429346607506
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4930,6 +4913,7 @@ MonoBehaviour:
   bullet: {fileID: 1396501027143761013, guid: db72d814f55e99f4a93680273adbceaa, type: 3}
   gun: {fileID: 745122665}
   _gameController: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!95 &786270578
 Animator:
   serializedVersion: 3
