@@ -31,6 +31,17 @@ public class UIMessageControll : MonoBehaviour
         id ++;
     }
 
+    public void Hiden() 
+    {
+        StartCoroutine(Hide());
+        StartCoroutine(ShowAtackCameraMode());
+    }   
+    public void Showing() 
+    {
+        StartCoroutine(Show());
+        StartCoroutine(HideAtackCameraMode());
+    }
+
     private void Check() 
     {
         switch (id) 
@@ -42,10 +53,21 @@ public class UIMessageControll : MonoBehaviour
                 Write("They are attacking us", id);
                 break;
             case 3:
-                StartCoroutine(Hide());
+                StartCoroutine(HideAndShow());
                 _gameController.SpawnEnemy();
-                _cameraAtackMode.rect = new Rect(1, 0, 1, 1);
                 break;
+            case 4:
+                Write("You did it", id);
+                break; 
+            case 5:
+                Write("But now is not the time to rejoice", id);
+                break;         
+            case 6:
+                Write("We need to get into the safe sector", id);
+                break;                       
+            case 7:
+                StartCoroutine(Hide());
+                break;            
         }
     }
 
@@ -68,7 +90,28 @@ public class UIMessageControll : MonoBehaviour
         }
     }
 
-    IEnumerator Hide() 
+    IEnumerator HideAndShow() 
+    {
+
+        for (int i = 0; i < _text.Length; i++)
+        {
+            _text[i].GetComponent<Animator>().Play("TextHide");
+        }
+        float fade = 1;
+        GetComponent<Image>().material = _material;
+        while (true)
+        {
+            fade -= 0.01f;
+            _material.SetFloat("_Fade", fade);
+            if (fade <= 0)
+            {
+                StartCoroutine(ShowAtackCameraMode());
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+    IEnumerator Hide()
     {
 
         for (int i = 0; i < _text.Length; i++)
@@ -88,6 +131,56 @@ public class UIMessageControll : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+    IEnumerator Show() 
+    {
 
-    
+        for (int i = 0; i < _text.Length; i++)
+        {
+            _text[i].GetComponent<Animator>().Play("TextShow");
+        }
+        float fade = _material.GetFloat("_Fade");
+        GetComponent<Image>().material = _material;
+        while (true)
+        {
+            fade += 0.01f;
+            _material.SetFloat("_Fade", fade);
+            if (fade >= 1)
+            {
+                GetComponent<Image>().material = null;
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    IEnumerator ShowAtackCameraMode() 
+    {
+        float _show = 1;
+        while (true)
+        {
+            _show -= 0.01f;
+            _cameraAtackMode.rect = new Rect(_show, 0, 1, 1);
+            if (_show <= 0.5f)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+    IEnumerator HideAtackCameraMode()
+    {
+        float _show = 0.5f;
+        while (true)
+        {
+            _show += 0.01f;
+            _cameraAtackMode.rect = new Rect(_show, 0, 1, 1);
+            if (_show >= 1)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+
 }

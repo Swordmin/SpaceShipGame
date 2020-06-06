@@ -67,10 +67,10 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Fade: -0.009999329
-    - _Scale: 15
+    - _Scale: 0.05
     m_Colors:
-    - Color_A9B3F9F4: {r: 0, g: 1, b: 0.72765326, a: 1}
-    - Color_B496F669: {r: 0, g: 1, b: 1, a: 1}
+    - Color_A9B3F9F4: {r: 0, g: 1, b: 0.72765326, a: 0.21176471}
+    - Color_B496F669: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

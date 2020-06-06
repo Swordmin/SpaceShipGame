@@ -32,7 +32,7 @@ public class PlayerAtackSystem : MonoBehaviour
             bullet.GetComponent<BulletControll>().сhanceMiss = _chance;
             bullet.GetComponent<BulletControll>()._pC = GetComponent<PlayerControll>();
 
-            float сalculation = 0f + GetComponent<PlayerControll>().ship.GetGunnerExp(0);
+            float сalculation = 50f + GetComponent<PlayerControll>().ship.GetGunnerExp(0);
             bullet.GetComponent<BulletControll>().сhanceMiss = сalculation - Percent(сalculation, 100 - GetComponent<PlayerControll>().partHealth[2], 0);
             ReloadBegin();
         }
@@ -54,7 +54,7 @@ public class PlayerAtackSystem : MonoBehaviour
         IndexAim.fillAmount = reload;
         while (true)
         {
-            reload += 0.5f;
+            reload += 0.2f;
             IndexAim.fillAmount = reload;
             yield return new WaitForSeconds(0.5f);
         }

@@ -1153,4 +1153,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/A/SpaceShip/6.apk
+  playerPath: C:/A/SpaceShip/7.apk

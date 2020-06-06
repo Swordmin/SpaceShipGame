@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] float money;
     [SerializeField] Camera cameraAtackMode;
     [SerializeField] Text moneyCountText;
+    [SerializeField] UIMessageControll _uiMessageControll;
 
     public Image healthBar;
 
@@ -31,9 +32,11 @@ public class GameController : MonoBehaviour
         }
         else 
         {
-            cameraAtackMode.rect = new Rect(1,0,1,1);
+            _uiMessageControll.Showing();
+            _uiMessageControll.SetId(4);
         }
     }
+
 
     public float GetMoney(float _money) 
     {
