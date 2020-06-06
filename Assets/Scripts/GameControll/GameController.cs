@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemy();
     }
 
     public void SpawnEnemy() 
