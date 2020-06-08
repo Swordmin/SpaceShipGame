@@ -25,11 +25,9 @@ public class PlayerAtackSystem : MonoBehaviour
         if (reload >= 1)
         {
             GameObject bullet = Instantiate(bulletPref, gun.transform.position, gameObject.transform.rotation);
+
             bullet.GetComponent<BulletControll>().scatter = scatter;
             bullet.GetComponent<BulletControll>().onAimId = onAimId;
-
-            float _chance = 50f + GetComponent<PlayerControll>().ship.GetGunnerExp(0);
-            bullet.GetComponent<BulletControll>().сhanceMiss = _chance;
             bullet.GetComponent<BulletControll>()._pC = GetComponent<PlayerControll>();
 
             float сalculation = 50f + GetComponent<PlayerControll>().ship.GetGunnerExp(0);

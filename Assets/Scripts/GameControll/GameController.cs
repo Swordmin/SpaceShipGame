@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera cameraAtackMode;
     [SerializeField] Text moneyCountText;
     [SerializeField] UIMessageControll _uiMessageControll;
+    [SerializeField] bool beginGame;
 
     public Image healthBar;
 
@@ -32,8 +33,14 @@ public class GameController : MonoBehaviour
         }
         else 
         {
-            _uiMessageControll.Showing();
-            _uiMessageControll.SetId(4);
+
+            if (beginGame) 
+            {
+                _uiMessageControll.Showing();
+                _uiMessageControll.SetId(4);
+                beginGame = false;
+            }
+
         }
     }
 

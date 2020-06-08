@@ -71,6 +71,8 @@ public class UIMessageControll : MonoBehaviour
         }
     }
 
+
+
     private void Write(string text, float _id) 
     {
         _text[1].text = "";
